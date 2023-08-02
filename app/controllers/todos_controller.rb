@@ -1,5 +1,7 @@
 class TodosController < ActionController::Base
 
+    before_action :set_todo, only: [:edit, :update, :show, :destroy]   # This is done to executed private set_to method for Create, destory, show and Edit Methods
+
     def new
         # This action is for view /todos/new 
         # @todo is an instance variable which is available through the controller and the View
@@ -20,23 +22,21 @@ class TodosController < ActionController::Base
     end
 
     def destroy
-        @todo = Todo.find(params[:id])
         @todo.destroy
         flash[:notice] = "Todo was Deleted successfully!"
-        
         redirect_to todos_path
     end
 
     def show
-        @todo = Todo.find(params[:id])
+        
     end
 
     def edit
-        @todo = Todo.find(params[:id])
+        
     end
 
     def update
-        @todo = Todo.find(params[:id])
+        
         if @todo.update(todo_params)
             flash[:notice] = "Todo was successfully updated"
             redirect_to todo_path(@todo) # Sent back to the todo which was just updated. 
@@ -58,6 +58,11 @@ class TodosController < ActionController::Base
 
     # This private method is here to allow the controller to receive below two parameters.
     private
+        def set_todo
+            @todo = Todo.find(params[:id])
+        end
+
+
         def todo_params
             params.require(:todo).permit(:name, :description)
         end
