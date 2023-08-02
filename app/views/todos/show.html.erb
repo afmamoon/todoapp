@@ -1,24 +1,28 @@
 <h1>Showing Todo </h1>
 
-<table width = "1000">
-    <tr>
-    <th> Id </th>
-    <th> Name </th>
-    <th> Description </th>
-    </tr>
+<table>
+
+
 
     <tr>
-        <td width="100">
+        <td>Id: </td>
+        <td>
             <%= @todo.id %>
         </td>
-
-        <td width="100">
+    </tr>
+    <tr>
+        <td> Name: </td>
+        <td>
             <%= @todo.name %>
         </td>
-
-        <td width="100">
+    </tr>
+    <tr>
+        <td> Description: </td>
+        <td>
             <%= @todo.description %>
         </td>
     </tr>
 
 </table>
+<p> </p>
+<%= link_to "Back", todos_path %> | <%= link_to "Edit", edit_todo_path(@todo) %>

@@ -1,0 +1,26 @@
+<h1> Listening All Todos </h1>
+
+<p>
+    <%= link_to "Create a Todo", new_todo_path %>
+</p>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Action Edit</td>
+        <td>Action Show</td>
+    </tr>
+
+        <% @todos.each do |todo| %>
+            <tr>
+                <td><%= todo.id %> </td>
+                <td><%= todo.name %></td>
+                <td><%= todo.description %></td>
+                <td><%= link_to "Edit", edit_todo_path(todo) %></td>
+                <td><%= link_to "Show", todo_path(todo) %></td>
+            </tr>
+        <% end %>
+
+</table>

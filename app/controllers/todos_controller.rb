@@ -37,6 +37,13 @@ class TodosController < ActionController::Base
         end
     end
 
+    def index
+        @todos = Todo.all
+
+        # This completes the Todos action. Now need to iterate through this in the index view
+
+    end
+
 
 
 
