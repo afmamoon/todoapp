@@ -12,14 +12,16 @@
         <td>Action Edit</td>
         <td>Action Show</td>
     </tr>
-
         <% @todos.each do |todo| %>
             <tr>
                 <td><%= todo.id %> </td>
                 <td><%= todo.name %></td>
                 <td><%= todo.description %></td>
-                <td><%= link_to "Edit", edit_todo_path(todo) %></td>
+                
                 <td><%= link_to "Show", todo_path(todo) %></td>
+                <td><%= link_to "Edit", edit_todo_path(todo) %></td>
+                <td><%= button_to "Delete", todo_path(todo), method: :delete, data: { confirm: "Really?" } %></td>
+                
             </tr>
         <% end %>
 
